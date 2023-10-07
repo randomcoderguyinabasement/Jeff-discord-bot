@@ -1,5 +1,17 @@
 import discord
 import responses
+import random
+
+responses = [
+    "what do yuw awANT!!!",
+    "wussup",
+    "your mom",
+    "hola",
+    "hey there",
+    "hi",
+    "i like trains",
+    "my name is actually Bobothy",
+]
 
 async def send_message(message, user_message, is_private):
     try:
@@ -16,7 +28,7 @@ def run_discord_bot():
 
     @client.event
     async def on_ready():
-        await client.change_presence(activity = discord.Game('.info'))
+        await client.change_presence(activity = discord.Game('Maintnence'))
         print(f'{client.user} is now running')
 
 
@@ -24,6 +36,12 @@ def run_discord_bot():
     async def on_message(message):
         if message.author == client.user:
             return
+        if 'jeff' in message.content.lower():
+            response = random.choice(responses)
+            await message.channel.send(response)
+        if '.spam' in message.content.lower():
+            for i in range(5):
+                await message.channel.send('MUAHAHAHAHAHAHA')
         
         username = str(message.author)
         user_message = str(message.content)
