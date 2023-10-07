@@ -109,3 +109,6 @@ def handle_response(message) -> str:
     if random.randint(1, 10) == 1:
         resp = random.choice(responses)
         return(resp)
+    if p_message == '.spam':
+        spam_message = '\n'.join(['MUAHAHAHAHAHAHAHAHAHAHAH' for _ in range(10)])
+        return spam_message
