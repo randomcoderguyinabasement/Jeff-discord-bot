@@ -77,6 +77,17 @@ greetings = [
     "my name is actually Bobothy",
 ]
 
+nolan = [
+    "there is nolan!",
+    "my bestie",
+    "nolan",
+    "yes nolan",
+    "nice emoji",
+    "nolani utbergus",
+    "a wild nolan was spotted!",
+    "walking bot look its your bestie!!!!",
+]
+
 async def send_message(message, user_message, is_private):
     try:
         response = responses.handle_response(user_message)
@@ -85,14 +96,14 @@ async def send_message(message, user_message, is_private):
         print(e)
 
 def run_discord_bot():
-    TOKEN = 'MTE1Nzg0NTIwMDEzNjMyMzExMg.Gl9kDZ.1mqr0Qw52SVSv3B1ZvYjepakGqImML_UAZF5UM'
+    TOKEN = 'MTE1Nzg0NTIwMDEzNjMyMzExMg.G-ALCo.Y7hUEU5rd1K-n34gVRbvtxQWb-_ObJYl9nEWJ0'
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
 
     @client.event
     async def on_ready():
-        await client.change_presence(activity = discord.Game('Maintnence'))
+        await client.change_presence(activity = discord.Game('.info'))
         print(f'{client.user} is now running')
 
 
@@ -119,9 +130,15 @@ def run_discord_bot():
         if '.joke' in message.content.lower():
             joke = random.choice(jokes)
             await message.channel.send(joke)
-        if random.randint(1, 10) == 1:
+        if random.randint(1, 40) == 1:
             resp = random.choice(responses)
             await message.channel.send(resp)
+        if '<@1157845200136323112>' in message.content.lower():
+            greeting = random.choice(greetings)
+            await message.channel.send(greeting)
+        if '<:nolan:1162109419820163153>' in message.content.lower():
+            nolani_utbergy = random.choice(nolan)
+            await message.channel.send(nolani_utbergy)
 
         username = str(message.author)
         user_message = str(message.content)
